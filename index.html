@@ -4,131 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klassentreffen - Jahrgang 1997</title>
-    <style>
-        :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --bg: #f1f5f9;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border: #e2e8f0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        
-        /* Login-Box bleibt kompakt zentriert */
-        .login-card {
-            background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            max-width: 450px;
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        /* Die Haupt-Card wird auf Desktop deutlich breiter */
-        .main-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 8px 15px -6px rgba(0, 0, 0, 0.05);
-            max-width: 950px; /* Schön breit für Desktop */
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Das intelligente Layout-Gitter */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Zwei gleich große Spalten auf Desktop */
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        h1 { font-size: 32px; margin-top: 0; color: var(--primary); font-weight: 800; letter-spacing: -0.5px; }
-        h2 { font-size: 24px; margin-top: 0; font-weight: 700; }
-        h3 { font-size: 18px; margin: 0 0 15px 0; font-weight: 600; border-bottom: 2px solid var(--bg); padding-bottom: 8px; }
-        p { line-height: 1.6; color: var(--text-muted); font-size: 16px; }
-        
-        /* Formular-Elemente */
-        label { display: block; text-align: left; margin: 14px 0 4px 0; font-size: 14px; font-weight: 600; color: var(--text-main); }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 8px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 15px;
-            background-color: #f8fafc;
-            transition: all 0.2s;
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background-color 0.2s;
-        }
-        button:hover { background-color: var(--primary-hover); }
-        
-        /* Utility & Info-Zeilen */
-        .hidden { display: none; }
-        .error { color: #ef4444; font-size: 14px; margin-top: 6px; font-weight: 500; }
-        .info-box { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
-        .info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 15px; }
-        .info-row:last-child { border-bottom: none; }
-        .info-row span:first-child { font-weight: 600; color: var(--text-main); }
-        
-        /* Radio Buttons für Abstimmung */
-        .radio-group { display: flex; flex-direction: column; gap: 10px; text-align: left; margin-top: 8px; }
-        .radio-label { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: normal; cursor: pointer; color: var(--text-muted); }
-        .radio-label input { width: auto; margin: 0; }
-
-        /* RESPONSIVE ANPASSUNG (Für Handys und kleine Bildschirme) */
-        @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr; /* Nur noch 1 Spalte auf Handys */
-                gap: 30px;
-            }
-            .main-card {
-                padding: 25px 20px;
-            }
-            h1 { font-size: 26px; }
-        }
-    </style>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- 1. PASSWORTSCHUTZ -->
     <div id="login-box" class="login-card">
         <h2>🔒 Interner Bereich</h2>
-        <p>Bitte gib das Passwort ein, um die Infos zum Jahrgangstreffen 1997 zu sehen.</p>
+        <p>Bitte gib das Passwort ein, um die Infos zum Jahrgangstreffen 1997 der Joliot-Curie-Schule zu sehen.</p>
         <input type="password" id="password-input" placeholder="Passwort...">
         <button onclick="checkPassword()">Einloggen</button>
         <p id="error-msg" class="error hidden">❌ Falsches Passwort!</p>
@@ -194,25 +77,6 @@
             
         </div>
     </div>
-
-    <script>
-        const CORRECT_PASSWORD = "schulname1997"; // Dein Wunschpasswort
-
-        function checkPassword() {
-            const userInput = document.getElementById("password-input").value;
-            const errorMsg = document.getElementById("error-msg");
-            
-            if (userInput === CORRECT_PASSWORD) {
-                document.getElementById("login-box").classList.add("hidden");
-                document.getElementById("content-box").classList.remove("hidden");
-            } else {
-                errorMsg.classList.remove("hidden");
-            }
-        }
-
-        document.getElementById("password-input").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") { checkPassword(); }
-        });
-    </script>
+	<script src="js/script.js"></script>
 </body>
 </html>
