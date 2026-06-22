@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klassentreffen - Jahrgang 1997</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --text: #1e293b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover { background-color: #1d4ed8; }
+        .hidden { display: none; }
+        .error { color: #dc2626; font-size: 14px; margin-top: -5px; }
+        iframe { width: 100%; height: 600px; border: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. SCHUTZWAND (Wird zuerst angezeigt) -->
+    <div id="login-box" class="container">
+        <h2>🔒 Passwort geschützt</h2>
+        <p>Bitte gib das Passwort für den Jahrgang 1997 ein:</p>
+        <input type="password" id="password-input" placeholder="Passwort eingeben...">
+        <button onclick="checkPassword()">Zugang öffnen</button>
+        <p id="error-msg" class="error hidden">Falsches Passwort! Bitte versuche es erneut.</p>
+    </div>
+
+    <!-- 2. DIE EIGENTLICHE HOMEPAGE (Erst nach Passwort sichtbar) -->
+    <div id="content-box" class="container hidden">
+        <h1>Klassentreffen 1997</h1>
+        <p>Schön, dass du da bist! Nach all den Jahren trommeln wir die 4 Klassen unseres Abschlussjahrgangs wieder zusammen.</p>
+        
+        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+        
+        <h3>📅 Eckdaten</h3>
+        <p><strong>Datum:</strong> [Dein Wunschdatum, z.B. Samstag, 12. September]</p>
+        <p><strong>Ort:</strong> [Name der Location / Stadt]</p>
+        <p><strong>Uhrzeit:</strong> ab 18:00 Uhr</p>
+
+        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+
+        <h3>📝 Rückmeldung & Kontaktpflege</h3>
+        <p>Bitte fülle das Formular aus, damit wir die Adressliste pflegen und das Essen planen können.</p>
+        
+        <!-- HIER TALLY-FORMULAR EINBETTEN -->
+        <!-- Ersetze den folgenden Link mit deinem Tally-Iframe-Code -->
+        <iframe src="https://tally.so/r/44EAlk" title="Klassentreffen 2027 Anmeldung"></iframe>
+    </div>
+
+    <script>
+        // HIER DEIN PASSWORT DEFINIEREN
+        const CORRECT_PASSWORD = "joliot-curie-1997"; 
+
+        function checkPassword() {
+            const userInput = document.getElementById("password-input").value;
+            const errorMsg = document.getElementById("error-msg");
+            
+            if (userInput === CORRECT_PASSWORD) {
+                document.getElementById("login-box").classList.add("hidden");
+                document.getElementById("content-box").classList.remove("hidden");
+            } else {
+                errorMsg.classList.remove("hidden");
+            }
+        }
+
+        // Erlaubt das Abschicken mit der Enter-Taste
+        document.getElementById("password-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
